@@ -1,0 +1,117 @@
+# Machine profiles: the input to Mode 1 (State Pack generation).
+# Editing a profile invalidates its approved State Pack until a new one is approved.
+
+machines:
+  - machine_id: M01
+    name: CNC Lathe 1
+    type: cnc_lathe
+    rated_power_kw: 11.0
+    idle_power_kw: 1.8
+    rated_units_per_hour: 60
+    normal_temperature_c: {min: 35, max: 65}
+    max_temperature_c: 85
+    normal_vibration: {min: 0.1, max: 0.4}
+    max_vibration: 0.9
+    backup_machines: [M02]
+    age_years: 6
+    notes: Spindle bearings replaced 14 months ago. Coolant pump shares the machine supply.
+
+  - machine_id: M02
+    name: CNC Lathe 2
+    type: cnc_lathe
+    rated_power_kw: 11.0
+    idle_power_kw: 1.8
+    rated_units_per_hour: 60
+    normal_temperature_c: {min: 35, max: 65}
+    max_temperature_c: 85
+    normal_vibration: {min: 0.1, max: 0.4}
+    max_vibration: 0.9
+    backup_machines: [M01]
+    age_years: 3
+    notes: ""
+
+  - machine_id: M03
+    name: Milling Machine 1
+    type: milling_machine
+    rated_power_kw: 15.0
+    idle_power_kw: 2.5
+    rated_units_per_hour: 40
+    normal_temperature_c: {min: 30, max: 70}
+    max_temperature_c: 90
+    normal_vibration: {min: 0.15, max: 0.45}
+    max_vibration: 1.0
+    backup_machines: [M04]
+    age_years: 9
+    notes: Older machine; tool wear shows up as rising power before surface-finish problems.
+
+  - machine_id: M04
+    name: Milling Machine 2
+    type: milling_machine
+    rated_power_kw: 15.0
+    idle_power_kw: 2.5
+    rated_units_per_hour: 40
+    normal_temperature_c: {min: 30, max: 70}
+    max_temperature_c: 90
+    normal_vibration: {min: 0.15, max: 0.45}
+    max_vibration: 1.0
+    backup_machines: [M03]
+    age_years: 2
+    notes: ""
+
+  - machine_id: M05
+    name: Air Compressor
+    type: screw_compressor
+    rated_power_kw: 22.0
+    idle_power_kw: 6.5
+    rated_units_per_hour: 0  # utility machine; does not produce units
+    normal_temperature_c: {min: 60, max: 95}
+    max_temperature_c: 110
+    normal_vibration: {min: 0.1, max: 0.35}
+    max_vibration: 0.8
+    backup_machines: []
+    age_years: 7
+    notes: >-
+      Supplies plant air. Unloaded running (motor on, no air demand) wastes about 30% of
+      rated power. Air leaks show up as more load cycles without more production downstream.
+
+  - machine_id: M06
+    name: Coolant Pump
+    type: centrifugal_pump
+    rated_power_kw: 7.5
+    idle_power_kw: 0.5
+    rated_units_per_hour: 0
+    normal_temperature_c: {min: 25, max: 55}
+    max_temperature_c: 75
+    normal_vibration: {min: 0.05, max: 0.3}
+    max_vibration: 0.7
+    backup_machines: []
+    age_years: 5
+    notes: Cavitation causes noisy, erratic vibration and a power drop. Seal leaks raise power gradually.
+
+  - machine_id: M07
+    name: Main Conveyor
+    type: belt_conveyor
+    rated_power_kw: 4.0
+    idle_power_kw: 1.2
+    rated_units_per_hour: 200
+    normal_temperature_c: {min: 20, max: 50}
+    max_temperature_c: 70
+    normal_vibration: {min: 0.05, max: 0.25}
+    max_vibration: 0.6
+    backup_machines: []
+    age_years: 4
+    notes: Often left running empty between batches. Belt misalignment raises power and motor temperature.
+
+  - machine_id: M08
+    name: Packaging Line
+    type: packaging_machine
+    rated_power_kw: 6.0
+    idle_power_kw: 1.5
+    rated_units_per_hour: 180
+    normal_temperature_c: {min: 25, max: 55}
+    max_temperature_c: 75
+    normal_vibration: {min: 0.05, max: 0.3}
+    max_vibration: 0.7
+    backup_machines: []
+    age_years: 3
+    notes: Heat-sealer elements draw constant power even when the line is starved of product.

@@ -1,0 +1,11 @@
+statepacks/
+__pycache__/
+.pytest_cache/
+*.png
+.presentation*
+output 
+.DS_Store
+PLAN.md
+
+
+backend/.DS_Store
